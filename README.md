@@ -110,7 +110,7 @@ ORDER BY f.TORE_GESAMT DESC LIMIT 5;
 
 **Antonio Prete** - Aspiring Data Engineer
 
-- LinkedIn: [Dein LinkedIn-Link hier]
+- LinkedIn: www.linkedin.com/in/antonio-prete
 - Email: antonio_prete@icloud.de
 - GitHub: @PreteAntonio1990
 
