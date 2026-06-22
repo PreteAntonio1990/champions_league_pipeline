@@ -1,16 +1,17 @@
 # ⚽ Champions League Data Pipeline
 
-> End-to-End ETL Pipeline für UEFA Champions League Daten von API bis Snowflake Star Schema mit Apache Airflow Orchestrierung.
+> End-to-End Cloud-Native ETL Pipeline für UEFA Champions League Daten mit Snowflake Star Schema, AWS S3 und Apache Airflow Orchestrierung.
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
 ![Pandas](https://img.shields.io/badge/Pandas-2.0-green?logo=pandas)
+![AWS](https://img.shields.io/badge/AWS-S3-orange?logo=amazon-aws)
 ![Snowflake](https://img.shields.io/badge/Snowflake-Cloud-blue?logo=snowflake)
 ![Airflow](https://img.shields.io/badge/Airflow-2.8-red?logo=apache-airflow)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)
 
 ## 📋 Über das Projekt
 
-Diese Pipeline holt täglich UEFA Champions League Daten von der Football-Data API, bereinigt sie mit Pandas und lädt sie in ein **Star Schema** in Snowflake. Die gesamte Pipeline wird durch **Apache Airflow** orchestriert und läuft täglich automatisch.
+Diese Pipeline holt täglich UEFA Champions League Daten von der Football-Data API, bereinigt sie mit Pandas und speichert sie in mehreren Storage-Layern: lokales CSV, **AWS S3 Cloud-Storage** (Bronze/Silver Pattern) und **Snowflake Star Schema** (Gold Layer). Die gesamte Pipeline wird durch **Apache Airflow** orchestriert und läuft täglich automatisch.
 
 **Was wird verarbeitet:**
 - 🏆 36 Champions League Teams
@@ -19,7 +20,12 @@ Diese Pipeline holt täglich UEFA Champions League Daten von der Football-Data A
 
 ## 🏗️ Architektur
 
-Football-Data API → Python/Pandas → CSV → Snowflake Star Schema (DIM_TEAM, DIM_DATUM, FACT_SPIEL)
+Football-Data API → Python/Pandas (Extract + Transform) → Multiple Storage Layers:
+
+- **Lokal (CSV):** Für Development und Debugging
+- **AWS S3 Bronze:** Raw-Daten in `s3://bucket/raw/`
+- **AWS S3 Silver:** Bereinigte Daten in `s3://bucket/clean/`
+- **Snowflake (Gold):** Star Schema mit DIM_TEAM, DIM_DATUM, FACT_SPIEL
 
 Orchestriert durch Apache Airflow mit täglichem Schedule und automatischen Retries.
 
@@ -28,23 +34,25 @@ Orchestriert durch Apache Airflow mit täglichem Schedule und automatischen Retr
 - **Python 3.12** - Hauptsprache
 - **Pandas** - Datenbereinigung und Transformation
 - **Requests** - REST API Calls
+- **AWS S3** - Cloud Object Storage (boto3)
 - **Snowflake** - Cloud Data Warehouse
 - **Apache Airflow 2.8** - Workflow Orchestrierung
 - **Docker Compose** - Container-Setup
 - **SQLAlchemy** - DB-Connection
 - **python-dotenv** - Secrets Management
+- **Python logging** - Strukturierte Logs
 
 ## 📁 Projekt-Struktur
 
 champions_league_pipeline/
-├── .env (API-Keys, NICHT in Git!)
+├── .env (API-Keys + AWS-Credentials, NICHT in Git!)
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
-├── pipeline.py (Haupt-ETL Script)
+├── pipeline.py (Haupt-ETL Script mit S3-Upload)
 ├── load_to_snowflake.py (Snowflake Loader)
 ├── dags/champions_league_dag.py (Airflow DAG)
-└── data/ (CSV-Dateien)
+└── data/ (lokale CSV-Dateien)
 
 ## 🚀 Setup-Anleitung
 
@@ -52,6 +60,7 @@ champions_league_pipeline/
 - Python 3.12+
 - Docker Desktop
 - Snowflake Account
+- AWS Account mit S3 Bucket
 - Football-Data API Key (kostenlos auf football-data.org)
 
 ### Installation
@@ -62,17 +71,32 @@ git clone https://github.com/PreteAntonio1990/champions_league_pipeline.git
 2. Python-Pakete installieren:
 pip install -r requirements.txt
 
-3. .env Datei erstellen mit allen Credentials
+3. .env Datei erstellen mit allen Credentials:
+- FOOTBALL_DATA_API_KEY
+- SNOWFLAKE_* Credentials
+- AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+- AWS_REGION, S3_BUCKET_NAME
 
-4. Snowflake-Tabellen erstellen (Star Schema)
+4. AWS S3 Bucket erstellen (Region: eu-central-1)
 
-5. Pipeline starten:
+5. Snowflake-Tabellen erstellen (Star Schema)
+
+6. Pipeline starten:
 python pipeline.py
-python load_to_snowflake.py
 
-6. Mit Airflow automatisieren:
+7. Mit Airflow automatisieren:
 docker compose up -d
 Web-UI auf http://localhost:8080
+
+## 🌐 AWS S3 Bucket-Struktur
+
+s3://champions-league-data-antonio/
+├── raw/                    (Bronze Layer - Rohdaten)
+│   ├── teams.csv
+│   └── spiele.csv
+└── clean/                  (Silver Layer - bereinigt)
+    ├── teams_clean.csv
+    └── spiele_clean.csv
 
 ## 📊 Beispiel-Analyse
 
@@ -87,31 +111,34 @@ ORDER BY f.TORE_GESAMT DESC LIMIT 5;
 
 ## 💡 Was ich gelernt habe
 
-- REST APIs mit Authentifizierung
-- Datenbereinigung mit Pandas
-- Star Schema Data Modeling
-- Snowflake Cloud Data Warehouse
-- Apache Airflow Orchestrierung
-- Docker und Container
+- REST APIs mit Authentifizierung und Error-Handling
+- Datenbereinigung mit Pandas (dtype-Konvertierung, NULL-Handling)
+- Star Schema Data Modeling für analytische Workloads
+- **Cloud-Native Architektur mit AWS S3 (Medallion Pattern)**
+- **Identity & Access Management (IAM) mit AWS**
+- Snowflake Cloud Data Warehouse + RBAC
+- Apache Airflow Orchestrierung mit DAGs
+- Docker und Container-Setup
 - SQLAlchemy mit Transactions
 - Idempotenz durch TRUNCATE-INSERT
 - Secrets Management mit .env
+- **Production-Standard Logging mit Python logging-Modul**
 
 ## 🚧 Was ich als nächstes machen würde
 
-- Code-Zentralisierung mit src/ Modul
-- Logging statt print-Statements
-- Datenqualität-Tests mit Great Expectations
-- Inkrementelle Loads
-- dbt für SQL-Transformationen
+- Snowflake liest direkt aus S3 (externes Stage)
+- ELT-Pattern mit dbt für SQL-Transformationen
+- Inkrementelle Loads statt FULL REFRESH
 - CI/CD mit GitHub Actions
+- Data Quality Tests mit Great Expectations
+- Monitoring + Alerting (CloudWatch)
 
 ## 📞 Kontakt
 
 **Antonio Prete** - Aspiring Data Engineer
 
-- LinkedIn: www.linkedin.com/in/antonio-prete
-- Email: antonio_prete@icloud.de
+- LinkedIn: https://www.linkedin.com/in/antonio-prete-0112753b0/
+- Email: prete_antonio@icloud.com
 - GitHub: @PreteAntonio1990
 
 ---
