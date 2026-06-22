@@ -34,3 +34,5 @@ logs/
 .snowflake/
 test_s3.py
 upload_test.py
+test_s3.py
+upload_test.py
