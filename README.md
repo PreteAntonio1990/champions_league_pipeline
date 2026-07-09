@@ -1,13 +1,8 @@
 # ⚽ Champions League Data Pipeline
 
-> End-to-End Cloud-Native ETL Pipeline für UEFA Champions League Daten mit Snowflake Star Schema, AWS S3 und Apache Airflow Orchestrierung.
+End-to-End Cloud-Native ETL Pipeline für UEFA Champions League Daten mit Snowflake Star Schema, AWS S3 und Apache Airflow Orchestrierung.
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-![Pandas](https://img.shields.io/badge/Pandas-2.0-green?logo=pandas)
-![AWS](https://img.shields.io/badge/AWS-S3-orange?logo=amazon-aws)
-![Snowflake](https://img.shields.io/badge/Snowflake-Cloud-blue?logo=snowflake)
-![Airflow](https://img.shields.io/badge/Airflow-2.8-red?logo=apache-airflow)
-![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)
+![Python](https://img.shields.io/badge/Python-3.12-blue) ![Pandas](https://img.shields.io/badge/Pandas-2.0-green) ![AWS](https://img.shields.io/badge/AWS-S3-orange) ![Snowflake](https://img.shields.io/badge/Snowflake-Cloud-lightblue) ![Airflow](https://img.shields.io/badge/Airflow-2.8-red) ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 
 ## 📋 Über das Projekt
 
@@ -43,20 +38,30 @@ Orchestriert durch Apache Airflow mit täglichem Schedule und automatischen Retr
 - **Python logging** - Strukturierte Logs
 
 ## 📁 Projekt-Struktur
-
 champions_league_pipeline/
-├── .env (API-Keys + AWS-Credentials, NICHT in Git!)
+├── src/
+│   ├── extract_data.py       # API-Abruf
+│   ├── pipeline.py            # Haupt-ETL Script mit S3-Upload
+│   └── load_to_snowflake.py  # Snowflake Loader
+├── dags/
+│   └── champions_league_dag.py  # Airflow DAG
+├── tests/
+│   ├── test_api.py            # API-Verbindungstest
+│   ├── test_s3.py             # S3-Verbindungstest
+│   ├── test_snowflake.py      # Snowflake-Verbindungstest
+│   └── upload_test.py         # S3-Upload-Test
+├── data/
+│   ├── bronze/                # Raw CSV-Dateien
+│   ├── silver/                # Bereinigte CSV-Dateien
+│   └── gold/                  # Final CSV-Dateien
+├── .env                       # API-Keys + AWS-Credentials (nicht in Git!)
 ├── .gitignore
 ├── README.md
-├── requirements.txt
-├── pipeline.py (Haupt-ETL Script mit S3-Upload)
-├── load_to_snowflake.py (Snowflake Loader)
-├── dags/champions_league_dag.py (Airflow DAG)
-└── data/ (lokale CSV-Dateien)
-
+└── requirements.txt
 ## 🚀 Setup-Anleitung
 
 ### Voraussetzungen
+
 - Python 3.12+
 - Docker Desktop
 - Snowflake Account
@@ -65,49 +70,38 @@ champions_league_pipeline/
 
 ### Installation
 
-1. Repository klonen:
-git clone https://github.com/PreteAntonio1990/champions_league_pipeline.git
-
-2. Python-Pakete installieren:
-pip install -r requirements.txt
-
+1. Repository klonen: `git clone https://github.com/PreteAntonio1990/champions_league_pipeline.git`
+2. Python-Pakete installieren: `pip install -r requirements.txt`
 3. .env Datei erstellen mit allen Credentials:
-- FOOTBALL_DATA_API_KEY
-- SNOWFLAKE_* Credentials
-- AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
-- AWS_REGION, S3_BUCKET_NAME
-
+   - FOOTBALL_DATA_API_KEY
+   - SNOWFLAKE_* Credentials
+   - AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+   - AWS_REGION, S3_BUCKET_NAME
 4. AWS S3 Bucket erstellen (Region: eu-central-1)
-
 5. Snowflake-Tabellen erstellen (Star Schema)
-
-6. Pipeline starten:
-python pipeline.py
-
-7. Mit Airflow automatisieren:
-docker compose up -d
-Web-UI auf http://localhost:8080
+6. Pipeline starten: `python src/pipeline.py`
+7. Mit Airflow automatisieren: `docker compose up -d` Web-UI auf http://localhost:8080
 
 ## 🌐 AWS S3 Bucket-Struktur
-
 s3://champions-league-data-antonio/
-├── raw/                    (Bronze Layer - Rohdaten)
+├── raw/ (Bronze Layer - Rohdaten)
 │   ├── teams.csv
 │   └── spiele.csv
-└── clean/                  (Silver Layer - bereinigt)
-    ├── teams_clean.csv
-    └── spiele_clean.csv
-
+└── clean/ (Silver Layer - bereinigt)
+├── teams_clean.csv
+└── spiele_clean.csv
 ## 📊 Beispiel-Analyse
 
 Top 5 torreichste Spiele mit Star Schema JOIN:
 
+```sql
 SELECT d.DATUM, t1.NAME AS HEIM, f.TORE_HEIM, f.TORE_GAST, t2.NAME AS GAST, f.TORE_GESAMT
 FROM FACT_SPIEL f
 JOIN DIM_DATUM d ON f.DATUM_ID = d.DATUM_ID
 JOIN DIM_TEAM t1 ON f.HEIM_TEAM_ID = t1.TEAM_ID
 JOIN DIM_TEAM t2 ON f.GAST_TEAM_ID = t2.TEAM_ID
 ORDER BY f.TORE_GESAMT DESC LIMIT 5;
+```
 
 ## 💡 Was ich gelernt habe
 
@@ -137,8 +131,8 @@ ORDER BY f.TORE_GESAMT DESC LIMIT 5;
 
 **Antonio Prete** - Aspiring Data Engineer
 
-- LinkedIn: https://www.linkedin.com/in/antonio-prete-0112753b0/
-- Email: prete_antonio@icloud.com
+- LinkedIn: https://www.linkedin.com/in/antonio-prete
+- Email: antonio_prete@icloud.com
 - GitHub: @PreteAntonio1990
 
 ---

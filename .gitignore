@@ -32,7 +32,6 @@ logs/
 
 # Snowflake
 .snowflake/
-test_s3.py
-upload_test.py
-test_s3.py
-upload_test.py
+
+# Data files (bleiben lokal)
+data/*.csv
