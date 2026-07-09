@@ -38,6 +38,7 @@ Orchestriert durch Apache Airflow mit täglichem Schedule und automatischen Retr
 - **Python logging** - Strukturierte Logs
 
 ## 📁 Projekt-Struktur
+```
 champions_league_pipeline/
 ├── src/
 │   ├── extract_data.py       # API-Abruf
@@ -58,6 +59,7 @@ champions_league_pipeline/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+```
 ## 🚀 Setup-Anleitung
 
 ### Voraussetzungen
@@ -83,6 +85,7 @@ champions_league_pipeline/
 7. Mit Airflow automatisieren: `docker compose up -d` Web-UI auf http://localhost:8080
 
 ## 🌐 AWS S3 Bucket-Struktur
+```
 s3://champions-league-data-antonio/
 ├── raw/ (Bronze Layer - Rohdaten)
 │   ├── teams.csv
@@ -90,6 +93,7 @@ s3://champions-league-data-antonio/
 └── clean/ (Silver Layer - bereinigt)
 ├── teams_clean.csv
 └── spiele_clean.csv
+```
 ## 📊 Beispiel-Analyse
 
 Top 5 torreichste Spiele mit Star Schema JOIN:
