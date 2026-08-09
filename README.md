@@ -4,9 +4,13 @@ End-to-End Cloud-Native ETL Pipeline für UEFA Champions League Daten mit Snowfl
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue) ![Pandas](https://img.shields.io/badge/Pandas-2.0-green) ![AWS](https://img.shields.io/badge/AWS-S3-orange) ![Snowflake](https://img.shields.io/badge/Snowflake-Cloud-lightblue) ![Airflow](https://img.shields.io/badge/Airflow-2.8-red) ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 
+## 👤 Über den Autor
+
+Ich bin Antonio Prete, Quereinsteiger ins Data Engineering nach 11 Jahren Berufserfahrung als Verfahrensmechaniker in der industriellen Produktion. Dieses Projekt entstand als Portfolio-Arbeit während meiner autodidaktischen Weiterbildung. Es zeigt eine typische End-to-End Data Engineering Aufgabe mit modernem Tech-Stack.
+
 ## 📋 Über das Projekt
 
-Diese Pipeline holt täglich UEFA Champions League Daten von der Football-Data API, bereinigt sie mit Pandas und speichert sie in mehreren Storage-Layern: lokales CSV, **AWS S3 Cloud-Storage** (Bronze/Silver Pattern) und **Snowflake Star Schema** (Gold Layer). Die gesamte Pipeline wird durch **Apache Airflow** orchestriert und läuft täglich automatisch.
+Diese Pipeline holt UEFA Champions League Daten von der Football-Data API, bereinigt sie mit Pandas und speichert sie in mehreren Storage-Layern: lokales CSV, **AWS S3 Cloud-Storage** (Bronze/Silver Pattern) und **Snowflake Star Schema** (Gold Layer). Die Pipeline wurde für tägliche automatische Ausführung mit **Apache Airflow** konzipiert und lief mehrfach erfolgreich durch.
 
 **Was wird verarbeitet:**
 - 🏆 36 Champions League Teams
@@ -15,7 +19,7 @@ Diese Pipeline holt täglich UEFA Champions League Daten von der Football-Data A
 
 ## 🏗️ Architektur
 
-Football-Data API → Python/Pandas (Extract + Transform) → Multiple Storage Layers:
+Football-Data API → Python/Pandas (Extract + Transform) → Multiple Storage Layers:s
 
 - **Lokal (CSV):** Für Development und Debugging
 - **AWS S3 Bronze:** Raw-Daten in `s3://bucket/raw/`
@@ -23,6 +27,14 @@ Football-Data API → Python/Pandas (Extract + Transform) → Multiple Storage L
 - **Snowflake (Gold):** Star Schema mit DIM_TEAM, DIM_DATUM, FACT_SPIEL
 
 Orchestriert durch Apache Airflow mit täglichem Schedule und automatischen Retries.
+
+## 📸 Screenshot
+
+### Erfolgreicher Pipeline-Lauf in Apache Airflow
+
+![Erfolgreicher DAG-Lauf](screenshots/airflow_successful_run.png)
+
+Die Pipeline wurde in Apache Airflow orchestriert und lief mehrfach erfolgreich durch. Der Screenshot zeigt einen erfolgreichen Lauf mit Status Success und einer Laufzeit von 11 Sekunden.
 
 ## 🛠️ Tech Stack
 
