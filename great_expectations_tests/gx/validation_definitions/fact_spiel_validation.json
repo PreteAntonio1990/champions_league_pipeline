@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "cb01a6e4-9f45-4d66-bfcd-e437c04cf328",
+      "name": "fact_spiel_asset"
+    },
+    "batch_definition": {
+      "id": "f127ee16-70b7-411b-a7cc-b5f0e0eefb82",
+      "name": "fact_spiel_full"
+    },
+    "datasource": {
+      "id": "e0a85fa0-d348-4eb0-91e5-7078d7c87dda",
+      "name": "snowflake_source"
+    }
+  },
+  "id": "71877584-68f3-4374-83de-8c179f57291c",
+  "name": "fact_spiel_validation",
+  "suite": {
+    "id": "e338005d-e68a-4edc-99d2-0fee667e8aa2",
+    "name": "fact_spiel_quality"
+  }
+}

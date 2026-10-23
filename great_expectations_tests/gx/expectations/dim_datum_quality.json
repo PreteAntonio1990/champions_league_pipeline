@@ -1,0 +1,59 @@
+{
+  "expectations": [
+    {
+      "id": "18a04da4-2aab-405b-9db9-97a154986c9f",
+      "kwargs": {
+        "column": "DATUM_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "da2c90ed-d4dc-43c5-a380-3650d0619e68",
+      "kwargs": {
+        "column": "DATUM_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "c8f6701e-e1bc-4985-9814-debe3cdc8c18",
+      "kwargs": {
+        "column": "DATUM"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "e6c8d319-a5d7-4132-8f4d-afc4464f3709",
+      "kwargs": {
+        "column": "MONAT",
+        "max_value": 12.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "c21c8785-9ae6-4d47-be1a-e64b3563a854",
+      "kwargs": {
+        "column": "TAG",
+        "max_value": 31.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "50d4041a-5d8b-493e-aaf1-14719dcbb7c3",
+  "meta": {
+    "great_expectations_version": "1.23.2"
+  },
+  "name": "dim_datum_quality",
+  "notes": null
+}

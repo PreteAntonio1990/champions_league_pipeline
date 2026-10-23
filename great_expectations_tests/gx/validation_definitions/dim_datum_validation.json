@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "beb92945-3b0f-4c2b-88a6-60186f3ffd82",
+      "name": "dim_datum_asset"
+    },
+    "batch_definition": {
+      "id": "5cc723e2-1a8e-4bd5-9189-74c26cafb235",
+      "name": "dim_datum_full"
+    },
+    "datasource": {
+      "id": "e0a85fa0-d348-4eb0-91e5-7078d7c87dda",
+      "name": "snowflake_source"
+    }
+  },
+  "id": "64e05d61-c050-47a9-8bca-c37babf5257c",
+  "name": "dim_datum_validation",
+  "suite": {
+    "id": "50d4041a-5d8b-493e-aaf1-14719dcbb7c3",
+    "name": "dim_datum_quality"
+  }
+}

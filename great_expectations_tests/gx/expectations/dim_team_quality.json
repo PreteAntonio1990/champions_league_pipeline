@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "id": "bf77133f-b82f-42d1-86f6-b47d6786d8c9",
+      "kwargs": {
+        "column": "TEAM_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "d586fdcf-ee1c-49ca-879d-e6b839ae04ba",
+      "kwargs": {
+        "column": "TEAM_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "f2b19b33-1797-409b-b91c-d858a37995d6",
+      "kwargs": {
+        "column": "NAME"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "1174a727-cb2b-4078-94a3-5997077b8437",
+      "kwargs": {
+        "column": "TLA",
+        "max_value": 10,
+        "min_value": 2
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_value_lengths_to_be_between"
+    }
+  ],
+  "id": "0b6f3e76-9fe4-45a7-a0a1-085e2a357a73",
+  "meta": {
+    "great_expectations_version": "1.23.2"
+  },
+  "name": "dim_team_quality",
+  "notes": null
+}

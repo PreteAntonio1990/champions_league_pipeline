@@ -29,10 +29,10 @@ def lade_teams_in_snowflake(engine):
     print(f"📊 {len(df)} Teams gelesen")
     
     with engine.connect() as conn:
-        conn.execute(text("TRUNCATE TABLE DIM_TEAM"))
+        conn.execute(text("TRUNCATE TABLE CHAMPIONS_LEAGUE.STAR_SCHEMA.DIM_TEAM"))
         conn.commit()
     
-    df.to_sql("dim_team", engine, if_exists="append", index=False)
+    df.to_sql("DIM_TEAM", engine, if_exists="append", index=False, schema="STAR_SCHEMA")
     print(f"✅ {len(df)} Teams geladen in DIM_TEAM")
 
 
@@ -51,10 +51,10 @@ def lade_dim_datum(engine, df_spiele):
     print(f"📊 {len(df_datum)} eindeutige Datums gefunden")
     
     with engine.connect() as conn:
-        conn.execute(text("TRUNCATE TABLE DIM_DATUM"))
+        conn.execute(text("TRUNCATE TABLE CHAMPIONS_LEAGUE.STAR_SCHEMA.DIM_DATUM"))
         conn.commit()
     
-    df_datum.to_sql("dim_datum", engine, if_exists="append", index=False)
+    df_datum.to_sql("DIM_DATUM", engine, if_exists="append", index=False, schema="STAR_SCHEMA")
     print(f"✅ {len(df_datum)} Datums geladen in DIM_DATUM")
     return df_datum
 
@@ -75,10 +75,10 @@ def lade_fact_spiel(engine, df_spiele, df_datum):
     print(f"📊 {len(df_fact)} Spiele vorbereitet")
     
     with engine.connect() as conn:
-        conn.execute(text("TRUNCATE TABLE FACT_SPIEL"))
+        conn.execute(text("TRUNCATE TABLE CHAMPIONS_LEAGUE.STAR_SCHEMA.FACT_SPIEL"))
         conn.commit()
     
-    df_fact.to_sql("fact_spiel", engine, if_exists="append", index=False)
+    df_fact.to_sql("FACT_SPIEL", engine, if_exists="append", index=False, schema="STAR_SCHEMA")
     print(f"✅ {len(df_fact)} Spiele geladen in FACT_SPIEL")
 
 

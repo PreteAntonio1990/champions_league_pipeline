@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    database: CHAMPIONS_LEAGUE
+    schema: STAR_SCHEMA
+    description: "Rohdaten aus der Champions League Pipeline"
+    tables:
+      - name: DIM_TEAM
+        description: "Dimension Tabelle mit allen Teams"
+      - name: DIM_DATUM
+        description: "Dimension Tabelle mit allen Spieltag Daten"
+      - name: FACT_SPIEL
+        description: "Fakten Tabelle mit allen Spielen"

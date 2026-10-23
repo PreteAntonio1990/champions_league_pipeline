@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: stg_team
+    description: "Staging Modell für Teams"
+    columns:
+      - name: team_id
+        description: "Primary Key des Teams"
+        tests:
+          - unique
+          - not_null
+      - name: team_name
+        tests:
+          - not_null
+
+  - name: stg_datum
+    description: "Staging Modell für Datumsangaben"
+    columns:
+      - name: datum_id
+        description: "Primary Key des Datums"
+        tests:
+          - unique
+          - not_null
+      - name: datum
+        tests:
+          - not_null
+
+  - name: stg_spiel
+    description: "Staging Modell für Spiele"
+    columns:
+      - name: spiel_id
+        description: "Primary Key des Spiels"
+        tests:
+          - unique
+          - not_null
+      - name: heim_team_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_team')
+              field: team_id
+      - name: gast_team_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_team')
+              field: team_id
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['FINISHED', 'SCHEDULED', 'IN_PLAY', 'POSTPONED', 'TIMED', 'LIVE', 'PAUSED']

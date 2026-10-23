@@ -1,0 +1,86 @@
+{
+  "expectations": [
+    {
+      "id": "b77e099a-caee-4565-b1e8-50ac53b32d9f",
+      "kwargs": {
+        "column": "SPIEL_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "a794d282-1581-40ae-99cb-711b01c36fb1",
+      "kwargs": {
+        "column": "SPIEL_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "b8622db5-9d5d-4521-83fc-e8c1b38bb89a",
+      "kwargs": {
+        "column": "HEIM_TEAM_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "fdb70110-2759-4acf-ae16-c8ef66733a1c",
+      "kwargs": {
+        "column": "GAST_TEAM_ID"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "08f413a0-4623-4b3c-a9c6-de797fe5383d",
+      "kwargs": {
+        "column": "TORE_HEIM",
+        "max_value": 20.0,
+        "min_value": -1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "68ae2263-4257-47d0-81a5-d016356baa08",
+      "kwargs": {
+        "column": "TORE_GAST",
+        "max_value": 20.0,
+        "min_value": -1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "cea9e2e6-431d-4ede-8637-e1c53b640667",
+      "kwargs": {
+        "column": "STATUS",
+        "value_set": [
+          "FINISHED",
+          "SCHEDULED",
+          "IN_PLAY",
+          "POSTPONED",
+          "TIMED",
+          "LIVE",
+          "PAUSED"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    }
+  ],
+  "id": "e338005d-e68a-4edc-99d2-0fee667e8aa2",
+  "meta": {
+    "great_expectations_version": "1.23.2"
+  },
+  "name": "fact_spiel_quality",
+  "notes": null
+}

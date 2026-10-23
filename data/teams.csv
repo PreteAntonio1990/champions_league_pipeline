@@ -1,37 +1,37 @@
 team_id,name,short_name,tla,land,gegruendet,stadion
-3,Bayer 04 Leverkusen,Leverkusen,B04,Germany,1904.0,BayArena
 4,Borussia Dortmund,Dortmund,BVB,Germany,1909.0,Signal Iduna Park
 5,FC Bayern München,Bayern,FCB,Germany,1900.0,Allianz Arena
-19,Eintracht Frankfurt,Frankfurt,SGE,Germany,1899.0,Deutsche Bank Park
+10,VfB Stuttgart,Stuttgart,VFB,Germany,1893.0,Mercedes-Benz Arena
 57,Arsenal FC,Arsenal,ARS,England,1886.0,Emirates Stadium
-61,Chelsea FC,Chelsea,CHE,England,1905.0,Stamford Bridge
+58,Aston Villa FC,Aston Villa,AVL,England,1872.0,Villa Park
 64,Liverpool FC,Liverpool,LIV,England,1892.0,Anfield
 65,Manchester City FC,Man City,MCI,England,1880.0,Etihad Stadium
-67,Newcastle United FC,Newcastle,NEW,England,1881.0,St. James' Park
-73,Tottenham Hotspur FC,Tottenham,TOT,England,1882.0,Tottenham Hotspur Stadium
-77,Athletic Club,Athletic,ATH,Spain,1898.0,San Mamés
+66,Manchester United FC,Man United,MUN,England,1878.0,Old Trafford
 78,Club Atlético de Madrid,Atleti,ATL,Spain,1903.0,Estadio Wanda Metropolitano
 81,FC Barcelona,Barça,FCB,Spain,1899.0,Camp Nou
 86,Real Madrid CF,Real Madrid,RMA,Spain,1902.0,Estadio Santiago Bernabéu
+90,Real Betis Balompié,Real Betis,BET,Spain,1907.0,Estadio Benito Villamarín
 94,Villarreal CF,Villarreal,VIL,Spain,1923.0,Estadio de la Cerámica
-102,Atalanta BC,Atalanta,ATA,Italy,1904.0,Stadio Atleti Azzurri d'Italia
+100,AS Roma,Roma,ROM,Italy,1927.0,Stadio Olimpico
 108,FC Internazionale Milano,Inter,INT,Italy,1908.0,Stadio Giuseppe Meazza
-109,Juventus FC,Juventus,JUV,Italy,1897.0,Allianz Stadium
 113,SSC Napoli,Napoli,NAP,Italy,1904.0,Stadio San Paolo
 498,Sporting Clube de Portugal,Sporting CP,SPO,Portugal,1906.0,Estádio José Alvalade
-516,Olympique de Marseille,Marseille,MAR,France,1898.0,Orange Vélodrome
+503,FC Porto,Porto,FCP,Portugal,1893.0,Estádio Do Dragão
+521,Lille OSC,Lille,LIL,France,1944.0,Stade Pierre-Mauroy
 524,Paris Saint-Germain FC,PSG,PSG,France,1904.0,Parc des Princes
-548,AS Monaco FC,Monaco,ASM,Monaco,1919.0,Stade Louis II.
+546,Racing Club de Lens,RC Lens,RCL,France,1906.0,Stade Bollaert-Delelis
 610,Galatasaray SK,Galatasaray,GAL,Turkey,1905.0,Türk Telekom Arena
-611,Qarabağ Ağdam FK,Qarabağ Ağdam,QAR,Azerbaijan,1951.0,Tofiq Bəhramov adına Respublika stadionu
-654,PAE Olympiakos SFP,Olympiakos,OLY,Greece,1925.0,Stadio Georgios Karaiskáki
+613,Fenerbahçe SK,Fenerbahçe,FEN,Turkey,1907.0,Ülker Stadyumu Fenerbahçe Şükrü Saracoğlu Spor Kompleksi
 674,PSV,PSV,PSV,Netherlands,1913.0,Philips Stadion
-678,AFC Ajax,Ajax,AJA,Netherlands,1900.0,Johan Cruyff ArenA
+675,Feyenoord Rotterdam,Feyenoord,FEY,Netherlands,1908.0,Stadion Feijenoord
+721,RB Leipzig,RB Leipzig,RBL,Germany,2009.0,Red Bull Arena
 851,Club Brugge KV,Club Brugge,BRU,Belgium,1894.0,Jan Breydelstadion
 930,SK Slavia Praha,Slavia Praha,SLP,Czech Republic,1892.0,Sinobo Stadium
-1876,FC København,København,KOB,Denmark,1992.0,Telia Parken
-1903,Sport Lisboa e Benfica,SL Benfica,BEN,Portugal,1904.0,Estádio do Sport Lisboa e Benfica
-3929,Royale Union Saint-Gilloise,Union SG,USG,Belgium,1897.0,Stade Joseph Mariën
+1887,FK Shakhtar Donetsk,Shaktar,SHD,Ukraine,1936.0,Oblasny SportKomplex Metalist
+1899,PAE AEK,PAE AEK,AEK,Greece,1924.0,Olympiako Stadio Spyros Louis
+2016,LASK Linz,LASK,LIN,Austria,1908.0,Raiffeisen Arena
+5720,Viking FK,Viking,VIK,Norway,1899.0,SR-Bank Arena
 5721,FK Bodø/Glimt,Bodø/Glimt,FK,Norway,1916.0,Aspmyra Stadion
-10601,FK Kairat,FK Kairat,KAI,Kazakhstan,,
-11034,Paphos FC,Paphos FC,AEP,Cyprus,,Alphamega Stadium
+7397,Como 1907,Como 1907,COM,Italy,1907.0,Stadio Giuseppe Sinigaglia
+7509,ŠK Slovan Bratislava,Sl. Bratislava,SBA,Slovakia,1919.0,Štadión Tehelné pole
+10233,Sabah FK,Sabah FK,SAB,Azerbaijan,,

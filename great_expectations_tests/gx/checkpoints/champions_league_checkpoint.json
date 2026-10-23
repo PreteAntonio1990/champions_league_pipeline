@@ -1,0 +1,28 @@
+{
+  "actions": [
+    {
+      "name": "update_docs",
+      "site_names": [
+        "local_site"
+      ],
+      "type": "update_data_docs"
+    }
+  ],
+  "id": "82a21ae6-e746-451b-889f-13a13359fce5",
+  "name": "champions_league_checkpoint",
+  "result_format": "SUMMARY",
+  "validation_definitions": [
+    {
+      "id": "afd79880-be72-4822-bfe5-006426d8168c",
+      "name": "dim_team_validation"
+    },
+    {
+      "id": "64e05d61-c050-47a9-8bca-c37babf5257c",
+      "name": "dim_datum_validation"
+    },
+    {
+      "id": "71877584-68f3-4374-83de-8c179f57291c",
+      "name": "fact_spiel_validation"
+    }
+  ]
+}
